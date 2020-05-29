@@ -1,0 +1,47 @@
+<% include partials/header %>
+
+
+
+<div class="container">
+	
+
+<header class="jumbotron">
+	<div class="container">
+		<h1>
+       Welcome to The Book Hub..
+    </h1>
+	<p>
+		Rent or Buy books you want to...
+	</p>
+		<p>
+			<a class="btn btn-primary btn-large" href="/books/new"> Add new book </a> 
+			
+		</p>
+		
+	</div>
+	
+</header>
+
+
+<div class="row text-center" style="display:flex; flex-wrap:wrap">
+	
+	
+<% books.forEach(function(book){ %>
+<div class="col-lg-3 col-md-6 col-xs-12">
+	<div class="thumbnail">
+	<img src="<%= book.image %>" height="100" width="100">
+		<div class="caption">
+			<h4>
+				<%= book.name %>
+			</h4>
+		</div>
+		<p>
+			<a href="/books/<%= book._id %>" class="btn btn-primary">More Info</a>
+		</p>
+	</div>
+</div>
+<% }); %>
+
+<% include partials/footer %>
+	
+</div>

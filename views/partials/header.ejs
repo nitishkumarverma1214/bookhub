@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>The Book Hub</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		
+	</head>
+<body>
+	<div class="navbar navbar-default navbar-fixednode ">
+	<div class="container-fuid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/">TheBookHub</a>
+			
+		</div>
+		<div class="collapse navbar-collapse">
+				<ul  class="nav navbar-nav navbar-right">
+				<% if(!currentuser){ %>
+					<li><a href="/login">login</a></li>
+					<li><a href="/register">signup</a></li>
+				<% }else{ %>
+					<li><a href="#">logged in as <%= currentuser.username%></a></li>
+					<li><a href="/logout">logout</a></li>
+					<% } %>
+				</ul>
+				
+			
+			
+		</div>
+		
+	</div>
+	
+</div>
+		

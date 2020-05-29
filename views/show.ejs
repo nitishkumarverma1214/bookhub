@@ -1,0 +1,70 @@
+<style>
+	.thumbnail{
+		padding:9px;
+	}
+	#delete-form{
+		display:inline;
+	}
+</style>
+
+<% include partials/header %>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="thumbnail">
+				<img class="img-responsive" src="<%= book.image %>" height="200" width="200">
+				<div class="caption-full">
+			    <h4 class="pull-right" style="color:DodgerBlue;">	₹59/for 15 days</h4>
+
+					<h4 style="color:DodgerBlue;">
+						<%= book.name %>
+					</h4>
+					<p>
+	                   <%= book.description %>
+                    </p>
+					
+					<p><em>Submitted by <%= book.author.username %> </em></p>
+					<% if(currentuser && currentuser._id.equals(book.author.id)){ %>
+					<a class="btn btn-warning" href="/books/<%=book._id%>/edit">Edit</a>
+					<form id="delete-form" action="/books/<%=book._id%>?_method=DELETE" method="post">
+						<button class="btn btn-danger">
+							Delete
+						</button>
+						<% } %>
+					</form>
+				</div>
+			</div>
+			<div class="well">
+				<div class="text-right">
+					<a class="btn btn-success" href="/books/<%= book._id %>/comments/new">Leave a review</a>
+					<hr>
+				</div>
+				 <% book.comments.forEach(function(comment){ %>
+	            <div class="row">
+					<div class="col-md-12">
+						
+		                <strong><%= comment.author.username %></strong> 
+                         
+						<p><%= comment.text %></p>
+						
+					</div>
+				
+				</div>
+                 <% }) %>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<% include partials/footer %>
